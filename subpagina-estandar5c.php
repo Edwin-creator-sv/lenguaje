@@ -1,44 +1,56 @@
 <?php
-function conectarDB(): mysqli {
-    $db = mysqli_connect('localhost', 'root', 'edw1nr0m3r0', 'proyecto');
+session_start();
 
-    if (!$db) {
-        die("Error: no se pudo conectar a la base de datos.");
+// Título del foro de esta subpágina
+$foro_titulo = 'La Ciudad de las Chimeneas Encendidas';
+
+// Captura simulada de respuestas
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $respuestas = $_POST['respuestas'] ?? [];
+    echo "<div style='background:#d4edda;color:#155724;padding:10px;margin-bottom:20px;border-radius:5px;'>";
+    echo "<strong>Respuestas enviadas:</strong><br>";
+    foreach ($respuestas as $preg => $resp) {
+        echo "<strong>$preg:</strong> " . htmlspecialchars($resp) . "<br>";
     }
-
-    return $db;
+    echo "</div>";
 }
-
-
-$conexion = conectarDB();
-echo "¡Conexión exitosa!";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>La Ciudad de las Chimeneas Encendidas</title> <link rel="stylesheet" href="style.css">
+    <title><?= htmlspecialchars($foro_titulo) ?></title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        textarea { width:100%; height:60px; margin-top:5px; margin-bottom:15px; padding:10px; border-radius:5px; border:1px solid #ccc; }
+        button { background-color: #007bff; color: white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; }
+        button:hover { background-color:#0056b3; }
+    </style>
 </head>
 <body class="dark">
-    <div class="container subpage-container">
-        <p><a href="index.php" class="back-to-home">&larr; Volver a la Página Principal</a></p>
-        <div class="subpage-content">
-            <img src="img/ciudad.jpg" alt="Imagen del Estándar 1" class="subpage-image"> <h2 class="subpage-title">La Ciudad de las Chimeneas Encendidas</h2> <p class="subpage-info">
-                <h2>Autor - Jorge Galán</h2>
-            </p>
+<div class="container subpage-container">
+    <p><a href="inde.php" class="back-to-home">&larr; Volver a la Página Principal</a></p>
+    <div class="subpage-content">
+        <img src="img/ciudad.jpg" alt="<?= htmlspecialchars($foro_titulo) ?>" class="subpage-image">
+        <h2 class="subpage-title"><?= htmlspecialchars($foro_titulo) ?></h2>
+        <p class="subpage-info"><h2>Autor - Jorge Galán</h2></p>
+
+        <form method="post">
             <ul class="subpage-features">
-                <li>Pregunta 1: ¿Qué simbolizan las chimeneas dentro de la historia?
-Respuesta:
-Creo que las chimeneas representan el poder, la rutina y la contaminación no solo del aire, sino también de la sociedad. Muestran cómo las injusticias se vuelven parte del paisaje cuando las personas dejan de mirar más allá del humo.</li>
-                <li>Pregunta 2: ¿Qué enseñanza te dejó este libro?
-Respuesta:
-Me enseñó que el cambio comienza cuando alguien se atreve a ver lo que los demás ignoran. Aunque el entorno esté lleno de humo y oscuridad, siempre hay quienes conservan la luz y luchan por un futuro más justo.</li> 
+                <li>
+                    <strong>Pregunta 1: ¿Qué simbolizan las chimeneas dentro de la historia?</strong>
+                    <textarea name="respuestas[Pregunta 1]" placeholder="Escribe tu respuesta aquí..."></textarea>
+                </li>
+                <li>
+                    <strong>Pregunta 2: ¿Qué enseñanza te dejó este libro?</strong>
+                    <textarea name="respuestas[Pregunta 2]" placeholder="Escribe tu respuesta aquí..."></textarea>
+                </li>
             </ul>
-        </div>
+            <button type="submit">Enviar respuestas</button>
+        </form>
     </div>
+</div>
 </body>
 </html>

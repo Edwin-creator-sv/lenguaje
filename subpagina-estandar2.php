@@ -25,7 +25,7 @@ echo "¡Conexión exitosa!";
 </head>
 <body class="dark">
     <div class="container subpage-container">
-        <p><a href="index.php" class="back-to-home">&larr; Volver a la Página Principal</a></p>
+        <p><a href="inde.php" class="back-to-home">&larr; Volver a la Página Principal</a></p>
         <div class="subpage-content">
             <img src="img/edqtd.jpg" alt="Imagen del Estándar 1" class="subpage-image"> <h2 class="subpage-title">El Día Que Todo Cambió</h2> <p class="subpage-info">
                 <h2>Autor - Martín Blasco y Flor Canosa</h2>

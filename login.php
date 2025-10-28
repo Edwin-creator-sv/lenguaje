@@ -31,9 +31,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $_SESSION['tipo'] = $usuario['tipo'];
 
             if($usuario['tipo'] === 'administrador'){
-                header("Location: index.php");
+                header("Location: admin_panel.php");
             } else {
-                header("Location: index.php");
+                header("Location: inde.php");
             }
             exit;
         } else {

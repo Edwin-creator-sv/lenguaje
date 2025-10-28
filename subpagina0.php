@@ -9,11 +9,9 @@ function conectarDB(): mysqli {
     return $db;
 }
 
-
 $conexion = conectarDB();
 echo "";
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -21,16 +19,22 @@ echo "";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Introducción</title> <link rel="stylesheet" href="style.css">
+    <title>Introducción</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark">
     <div class="container subpage-container">
-        <p><a href="index.php" class="back-to-home">&larr; Volver a la Página Principal</a></p>
+        <p><a href="inde.php" class="back-to-home">&larr; Volver a la Página Principal</a></p>
+
         <div class="subpage-content">
-            <video src="img/video.mp4" alt="Imagen del Estándar 1" class="subpage-video"> <h2 class="subpage-title">Estándar 1: ISO/IEC 27001</h2> <p class="subpage-info">
-               </p>
-               </video>
-               </div>
+            <h2 class="subpage-title">Reseñas Audiovisuales</h2>
+
+            <!-- Video reproducible -->
+            <video class="subpage-video" controls autoplay muted loop width="640" height="360">
+                <source src="img/video.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
     </div>
 </body>
 </html>
